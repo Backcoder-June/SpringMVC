@@ -1,0 +1,16 @@
+package tv;
+
+public class TVcontroller {
+	
+	public static void main(String[] args) {
+		
+		SamsungTV stv = new SamsungTV();
+
+		stv.turnOff();
+		stv.turnOn();
+		stv.volumeDown(10);
+		
+		
+	}
+
+}

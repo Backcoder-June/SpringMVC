@@ -1,0 +1,27 @@
+package member;
+
+public class MemberDAO {
+
+	MemberDTO dto;
+	
+//	MemberDAO(MemberDTO dto) {
+//		this.dto = dto;
+//	}
+
+	public void setDto(MemberDTO dto) {
+		this.dto = dto;
+	}
+
+
+	public boolean selectMember() {
+		if(dto.getId().equals("spring")&&dto.getPw()==1111){
+			return true; 
+		}else {return false;}
+	}
+
+	
+	public void insertmember() {		
+		System.out.println("회원가입 완료");
+	}
+
+}

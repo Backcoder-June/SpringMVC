@@ -1,0 +1,16 @@
+package memberService;
+
+public class JuniorEMP implements MemberService{
+
+	@Override
+	public void registerMember() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+	}
+	
+	
+
+}

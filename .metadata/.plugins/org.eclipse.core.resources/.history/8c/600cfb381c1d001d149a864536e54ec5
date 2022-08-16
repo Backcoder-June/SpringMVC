@@ -1,0 +1,28 @@
+package springtv;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class TVcontroller {
+	
+	public static void main(String[] args) {
+
+		ApplicationContext factory = new ClassPathXmlApplicationContext("springtv/springtv.xml");
+
+		TVinterface tv = (TVinterface)factory.getBean("stv");
+				
+		
+		
+		stv.powerOff();
+		stv.powerOn();
+		stv.volumeDown(10);
+		
+		ltv.volumeDown(3);
+		ltv.volumeUp(5);
+		ltv.powerOff();
+		
+		
+		
+	}
+
+}

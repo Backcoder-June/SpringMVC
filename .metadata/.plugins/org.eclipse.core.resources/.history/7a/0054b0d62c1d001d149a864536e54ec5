@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="dto1" class="member.MemberDTO">
+<property name="id" value="spring"/>
+<property name="pw" value="1111"/>
+<property name="name" value="backcoder"/> 
+</bean>
+
+<bean id="dto2" class="member.MemberDTO">
+<property name="id" value="winter"/>
+<property name="pw" value="2222"/>
+<property name="name" value="jacksparrow"/> 
+</bean>
+
+<bean id="dto3" class="member.MemberDTO"/>
+
+
+
+<!-- dao 파라미터까지 설정 고정 / 객체 넣을때는 value 가 아니라 ref 로 참조해서 가져옴 / 세터메소드 이용하는 것
+MemberDAO memberdao = new MemberDAO(dto1); 변수 dto 에 setter 이용해서 ref 로 dto1 넣음  
+scope 는 세션같은거 설정하는거. 얼마동안 유지할지. request session prototype singletone-->
+
+<bean id="dao" class="member.MemberDAO" scope="">
+<property name="dto" ref="dto1"/>   
+</bean>
+
+
+</beans>
