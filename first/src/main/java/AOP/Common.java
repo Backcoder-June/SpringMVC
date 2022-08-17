@@ -1,0 +1,50 @@
+package AOP;
+
+import java.util.Date;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+
+
+public class Common {
+
+	long starttime = System.currentTimeMillis();
+	
+	public void a() {
+		System.out.println("먼저 호출 시작시간 : " + new Date(starttime));
+	}
+	
+	public void b() {
+		long endtime = System.currentTimeMillis();
+
+		System.out.println("나중 호출 시간 : " + new Date(endtime));
+	}
+
+	public void c(ProceedingJoinPoint joinpoint) {
+		try {
+		System.out.println
+		("===>c메소드--around 이전 결과입니다." );//before
+		Object returnValue = joinpoint.proceed();//핵심관심메소드 실행
+		if(returnValue != null)
+		System.out.println
+		("===>c메소드--around 이후 리턴값=" + returnValue);//after	
+		System.out.println
+		("===>c메소드--around 이후  " 
+		+joinpoint.getTarget());//핵심관심객체
+		System.out.println
+		("===>c메소드--around 이후  " 
+		+joinpoint.toLongString());//핵심관심선택메소드선언
+		
+		Object args[] = joinpoint.getArgs();//핵심관심메소드 매개변수배열	
+		for(Object s : args) {
+		System.out.println
+		("===>c메소드--around 이후  " +s);	
+		}
+		}catch(Throwable e) {
+		System.out.println(e);
+		}
+	}
+
+	
+
+	
+}

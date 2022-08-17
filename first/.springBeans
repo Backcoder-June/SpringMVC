@@ -10,6 +10,8 @@
 		<config>src/main/java/springtv/springtv.xml</config>
 		<config>src/main/java/member/member.xml</config>
 		<config>src/main/java/command/command.xml</config>
+		<config>src/main/java/memberAnnotation/memberxml.xml</config>
+		<config>src/main/java/AOP/aopbean.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
