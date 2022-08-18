@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="first"/>
+<aop-project name="first">
+<aspect-definition advice-class-name="AOP.Common" advice-method-name="c" advice-type="AROUND" aspect-end-line-number="19" aspect-name="common" aspect-start-line-number="19" factory-id="org.springframework.ide.eclipse.aop.core.beanAspectDefinitionElementFactory" file="/first/src/main/java/AOP/aopbean.xml" pointcut-expression="execution(public * *.Member.login(..))" proxy-target-class="false">
+<aop-reference advice-type="AROUND" bean="1:BeansModel|2:first|3:src/main/java/AOP/aopbean.xml|7:beans:6|8:member:8" bean-file="/first/src/main/java/AOP/aopbean.xml" bean-start-line="8" factory-id="org.springframework.ide.eclipse.aop.core.aopReferenceElementFactory" file="/first/src/main/java/AOP/aopbean.xml" source="=first/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;AOP{Common.java[Common~c~QProceedingJoinPoint;" source-start-line="22" target="=first/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;AOP{Member.java[Member~login~QString;" target-start-line="4"/>
+</aspect-definition>
+</aop-project>
 </aop-reference-model>

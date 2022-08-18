@@ -25,7 +25,7 @@
 
 
 
-<!-- dao 파라미터까지 설정 고정 / 객체 넣을때는 value 가 아니라 ref 로 참조해서 가져옴 / 세터메소드 이용하는 것
+<!-- dao 파라미터까지 설정 고정( 파라미터가 아니라, 객체를 변수처럼 받는것  / 객체 넣을때는 value 가 아니라 ref 로 참조해서 가져옴 / 세터메소드 이용하는 것
 MemberDAO memberdao = new MemberDAO(dto1); 변수 dto 에 setter 이용해서 ref 로 dto1 넣음  
 scope 는 세션같은거 설정하는거. 얼마동안 유지할지. request session prototype singletone-->
 
