@@ -23,6 +23,8 @@
 	
 	<context:component-scan base-package="com.backcoder.test" />
 	<context:component-scan base-package="annotation.Springmvc" />
+	<context:component-scan base-package="serviceAnnotation" />
+	<context:component-scan base-package="Board" />
 
 <!-- 핸들러맵핑 설정 추가 -->
 <!-- 

@@ -27,7 +27,23 @@
     <Manager pathname="" />
     -->
 
-  
-  <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maIdle="3" maxActive="5" maxWait="-1" name="jdbc/backdb" password="1111" type="javax.sql.DataSource" url="jdbc:mysql://127.0.0.1:3306/backcoder" username="backcoder"/>
+
+  <Resource
+  name="jdbc/backdb"
+  auth="Container"
+  type="javax.sql.DataSource"
+  driverClassName="com.mysql.cj.jdbc.Driver"
+  url="jdbc:mysql://127.0.0.1:3306/backcoder"
+  username="backcoder"
+  password="1111"
+  maxActive="5" maIdle="3" maxWait="-1"
+  />
+
+</Context>
+
+
+
+
+
 
 </Context>

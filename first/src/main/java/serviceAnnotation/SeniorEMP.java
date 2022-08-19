@@ -19,7 +19,17 @@ public class SeniorEMP implements MemberService {
 			dao.adminStat();
 		
 		}
-
-
+}
+	
+	@Override
+	public String registerMember(MemberDTO dto) {
+	
+		if(dao.selectMember(dto)==true) {
+			dao.insertCompany(dto);
+			dao.adminStat(dto);
+			return "회원가입 완료"; 
+		}else {return "회원가입 불가능";}
+	
+		
 }
 }
