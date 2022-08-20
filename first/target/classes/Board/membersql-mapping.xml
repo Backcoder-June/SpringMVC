@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="m">
+
+   
+  <select id="memberlist" resultType="Board.memberDTO">  
+  select * from servletmember
+  </select>
+
+  <select id="onemember" resultType="Board.memberDTO" parameterType="String">  
+  select * from servletmember where id=#{id}
+  </select>
+
+
+<!--  int[] a = {0, 5} -->
+<select id="paginglist" resultType="Board.memberDTO"  >
+	select * from servletmember order by id limit 
+	<foreach collection="array" item="num" separator=",">
+	#{num}
+	</foreach>
+</select>
+
+
+
+<insert id="join" parameterType="Board.memberDTO" >
+ insert into servletmember(id, pw, name) values(#{id}, #{pw}, #{name}) 
+</insert>
+
+
+
+
+
+
+
+
+  
+  </mapper>

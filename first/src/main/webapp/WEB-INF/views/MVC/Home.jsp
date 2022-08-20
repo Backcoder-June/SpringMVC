@@ -34,7 +34,7 @@
 <a href="http://localhost:8090/webServlet_war_exploded/MVC/joinmember.jsp">회원가입</a>
 <br>
 <br>
-<a href="http://localhost:8090/test/memberlist">회원정보 보러가기</a>
+<a href="http://localhost:8090/test/allmembers">회원정보 보러가기</a>
 <br>
 <br>
 <a href="http://localhost:8090/webServlet_war_exploded/MVC/deletemember.jsp">회원탈퇴</a>

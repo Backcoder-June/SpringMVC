@@ -2,7 +2,6 @@ package Board;
 
 
 import Board.BoardDTO;
-import Board.MemberDTO;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

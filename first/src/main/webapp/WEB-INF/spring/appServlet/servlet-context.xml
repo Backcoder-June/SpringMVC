@@ -26,6 +26,15 @@
 	<context:component-scan base-package="serviceAnnotation" />
 	<context:component-scan base-package="Board" />
 
+
+
+
+
+
+
+
+
+
 <!-- 핸들러맵핑 설정 추가 -->
 <!-- 
 <beans:bean id="hello" class="springMVC.HelloController"></beans:bean>

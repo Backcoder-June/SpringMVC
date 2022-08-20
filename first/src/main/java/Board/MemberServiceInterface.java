@@ -1,13 +1,19 @@
 package Board;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface MemberServiceInterface {
 	
-	public ArrayList<MemberDTO> allMember();
+	public List<memberDTO> allMember() throws IOException;
 
+	public memberDTO oneMember(String id) throws IOException; 
 	
-	public String registerMember(MemberDTO dto);
-	
+	public String registerMember(memberDTO dto);
 
+	public List<memberDTO> paginglist(int[] limit) throws IOException;
+
+	public void joinmember(memberDTO dto) throws IOException;; 
+	
 }

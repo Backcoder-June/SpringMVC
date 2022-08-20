@@ -1,9 +1,8 @@
 package Board;
 
 import Board.BoardDAO;
-import Board.MemberDAO;
+
 import Board.BoardDTO;
-import Board.MemberDTO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,10 +19,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
 public class BoardController {
+
+	@Autowired
+	MemberService service; 
+	
 	
 	@GetMapping("/home")
 	public String home() {
@@ -31,23 +35,33 @@ public class BoardController {
 		return "/MVC/Home"; 
 	}
 
+@GetMapping("/allmembers")
+public String allmembers(Model model) throws IOException  {
+	List<memberDTO> memberlist = service.allMember();
+
+	model.addAttribute("allmember", memberlist);
+
+	return "/MVC/allmember";
+
+}
+	
 
 	
 	@GetMapping("/memberlist")
 	public String allmember(Model model) {
 
-		MemberDAO dao = new MemberDAO();
-    ArrayList<MemberDTO> list = dao.selectAll();
+		BoardDAO dao = new BoardDAO();
+    List<BoardDTO> list = dao.Allboard();
 
     
             model.addAttribute("allmember",list);
             return "/MVC/allmember";             	
 	}
+
 	
 	
 	
-	
-/*    @Override
+	/*    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String service = req.getParameter("menu");

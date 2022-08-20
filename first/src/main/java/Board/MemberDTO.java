@@ -2,7 +2,8 @@ package Board;
 
 import org.springframework.stereotype.Component;
 
-public class MemberDTO {
+@Component("memdto")
+public class memberDTO {
 
     private String id;
     private String pw;
@@ -16,8 +17,8 @@ public class MemberDTO {
                 '}';
     }
 
-    public MemberDTO(){}
-    public MemberDTO(String id, String pw, String name) {
+    public memberDTO(){}
+    public memberDTO(String id, String pw, String name) {
         this.id = id;
         this.pw = pw;
         this.name = name;

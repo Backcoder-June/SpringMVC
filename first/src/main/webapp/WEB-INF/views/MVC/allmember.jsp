@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="Board.MemberDAO" %>
-<%@ page import="Board.MemberDTO" %>
+<%@ page import="Board.memberDAO" %>
+<%@ page import="Board.memberDTO" %>
 <%@ page import="java.util.ArrayList" %>
   
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
