@@ -17,7 +17,7 @@ public class BoardDAO {
 
         Connection con = null;
 
-        ArrayList<BoardDTO> boardlist = new ArrayList<>();
+        ArrayList<BoardDTO> boardlist = new ArrayList<BoardDTO>();
 
         try {
             Context initcontext = new InitialContext();
@@ -152,7 +152,7 @@ public class BoardDAO {
 
         Connection con = null;
         BoardDTO dto = null;
-        ArrayList<BoardDTO> list = new ArrayList<>();
+        ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
 
         try {
             Context initcontext = new InitialContext();

@@ -14,6 +14,8 @@ public interface MemberServiceInterface {
 
 	public List<memberDTO> paginglist(int[] limit) throws IOException;
 
-	public void joinmember(memberDTO dto) throws IOException;; 
+	public void joinmember(memberDTO dto) throws IOException;
+	
+	public int login(String id, String pw) throws IOException; 
 	
 }

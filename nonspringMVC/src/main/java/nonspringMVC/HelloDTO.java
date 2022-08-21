@@ -1,8 +1,8 @@
 package nonspringMVC;
 
-public class HelloDTO {
+public class HelloDTO{
 	
-	String message;
+	public String message;
 
 	public String getMessage() {
 		return message;

@@ -1,4 +1,6 @@
 INDEX VERSION 1.131
+C:\Sts3P\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2526560216.index
+\testing3\src\main\java
 C:\Sts3P\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1159489818.index
 \nonspringMVC\src\main\java
 C:\Sts3P\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\370046166.index

@@ -30,7 +30,9 @@
 </insert>
 
 
-
+<select id="login" resultType="String">
+select pw from servletmember where id=#{id}
+</select> 
 
 
 

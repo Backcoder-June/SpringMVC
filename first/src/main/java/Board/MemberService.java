@@ -11,7 +11,13 @@ import org.springframework.stereotype.Service;
 public class MemberService implements MemberServiceInterface{
 
 	memberDAO dao = new memberDAO();
-	
+
+	@Override
+	public int login(String id, String pw) throws IOException {
+		int condition = dao.login(id, pw);
+		
+		return condition; 
+	}
 
 	@Override
 	public void joinmember(memberDTO dto) throws IOException {

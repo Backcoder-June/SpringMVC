@@ -111,10 +111,27 @@ public class memberDAO {
 
     
     
-    public int login(String userid, String userpw) {
+    public int login(String userid, String userpw) throws IOException {
 
-        Connection con = null;
-        int condition = 0;
+    	SqlSessionFactoryBuilder Builder = new SqlSessionFactoryBuilder();
+    	SqlSessionFactory factory = Builder.build(Resources.getResourceAsReader("Board/mybatisConfig.xml"));
+    	SqlSession session = factory.openSession();
+
+    	String dbpw = session.selectOne("login", userid );
+    	
+    	int condition = 0; 
+    	if(dbpw != null) {
+    		condition = 1; 
+    		
+    		if(userpw.equals(dbpw)) {
+    			condition = 2;
+    		}
+    	}else { condition =3; }
+
+    	return condition; 
+    }
+    	
+/*        Connection con = null;
 
         try {
             Context initcontext = new InitialContext();
@@ -147,7 +164,7 @@ public class memberDAO {
 finally { try {con.close(); } catch (Exception e) {} }
 
         return condition;
-    }
+*/    
 
 
     public int edit(memberDTO dto) {

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard"/>
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.egit.ui.CreateRepositoryWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.egit.ui.wizardCategory"/>
 			<item value="org.springframework.ide.eclipse.beans.ui.wizards.category"/>
 			<item value="org.eclipse.wst.XMLCategory"/>
 		</list>
@@ -33,10 +34,11 @@
 		</list>
 	</section>
 	<section name="PreferencesExportWizard">
-		<item key="" value="C:\Users\skyst\Desktop\eclipse_like_intellij_keysetting.epf"/>
+		<item key="" value="C:\Users\skyst\Desktop\eclipseKeyset.epf"/>
 		<item key="WizardPreferencesExportPage1.STORE_OVERWRITE_EXISTING_FILES_ID" value="false"/>
 		<item key="WizardPreferencesExportPage1.EXPORT_ALL_PREFERENCES_ID" value="false"/>
 		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\skyst\Desktop\eclipseKeyset.epf"/>
 			<item value="C:\Users\skyst\Desktop\eclipse_like_intellij_keysetting.epf"/>
 		</list>
 		<list key="WizardPreferencesExportPage1.TRANSFER_PREFERENCES_NAMES_ID">

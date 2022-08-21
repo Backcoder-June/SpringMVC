@@ -2,6 +2,7 @@ package Board;
 
 import Board.BoardDAO;
 
+
 import Board.BoardDTO;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ import java.util.List;
 @Controller
 public class BoardController {
 
-	@Autowired
+	@Autowired	
 	MemberService service; 
 	
 	
@@ -44,22 +46,46 @@ public String allmembers(Model model) throws IOException  {
 	return "/MVC/allmember";
 
 }
-	
 
-	
-	@GetMapping("/memberlist")
-	public String allmember(Model model) {
+@GetMapping("/join")
+public String joinform() {
 
-		BoardDAO dao = new BoardDAO();
-    List<BoardDTO> list = dao.Allboard();
+	return "/MVC/joinmember"; 
+}
 
-    
-            model.addAttribute("allmember",list);
-            return "/MVC/allmember";             	
-	}
+@PostMapping("/join")
+public String joinprocess(memberDTO dto, Model model) throws IOException {
 
+	model.addAttribute("newMember",dto.getId());
+	service.joinmember(dto); 
 	
 	
+	
+	return "/MVC/joinsuccess";	
+}
+
+
+@PostMapping("/login")
+public String login(String id, String pw, HttpServletRequest request) throws IOException {
+	
+	int condition = service.login(id, pw);
+	
+	if(condition == 2) {
+		HttpSession session = request.getSession();
+		session.setAttribute("sessionid", id);
+		
+		return "/MVC/logined_Home";
+	}else if (condition ==1 || condition ==3) {
+		return "/MVC/loginFail";
+	
+	}else {return null;} //에러페이지로 리턴해주면 될듯하다    
+}
+
+@GetMapping("/logined")
+public String logined() {
+	return "/MVC/logined_Home";
+	
+}
 	
 	/*    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

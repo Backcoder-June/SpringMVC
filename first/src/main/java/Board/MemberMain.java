@@ -47,7 +47,7 @@ System.out.println("=====");
 
 
 // join 
-memberDTO dto1 = new memberDTO("banana", "2222", "delmont");
+memberDTO dto1 = new memberDTO("apple", "2222", "honey");
 
 service.joinmember(dto1);
 
