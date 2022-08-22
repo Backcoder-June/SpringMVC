@@ -19,103 +19,75 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-@Repository
+@Repository("dao")
 public class memberDAO {
 
-//	@Autowired
-//	private SqlSessionFactory factory;
-	
-	
-	
+	@Autowired
+	SqlSession session;
+
+	// 전체회원 조회 
     public List<memberDTO> selectAll() throws IOException {
-
-    	SqlSessionFactoryBuilder Builder = new SqlSessionFactoryBuilder();
-    	SqlSessionFactory factory = Builder.build(Resources.getResourceAsReader("Board/mybatisConfig.xml"));
-
-    	SqlSession session = factory.openSession();
-    	
     	List<memberDTO> memberlist = session.selectList("memberlist");
-    	
-    	
     	return memberlist;
     }
 
-    
-    
+    // 한명 조회 
     public memberDTO selectonemember(String id) throws IOException {
-
-    	SqlSessionFactoryBuilder Builder = new SqlSessionFactoryBuilder();
-    	SqlSessionFactory factory = Builder.build(Resources.getResourceAsReader("Board/mybatisConfig.xml"));
-    	SqlSession session = factory.openSession();
-
     	return session.selectOne("onemember", id);
     }
 
+    // 페이징으로 조회 
     public List<memberDTO> paging(int[] limit) throws IOException {
-
-    	SqlSessionFactoryBuilder Builder = new SqlSessionFactoryBuilder();
-    	SqlSessionFactory factory = Builder.build(Resources.getResourceAsReader("Board/mybatisConfig.xml"));
-    	SqlSession session = factory.openSession();
-
     	return session.selectList("paginglist", limit);    	
     }
 
+    // 총인원수 
+    public int getCount() {
+		return session.selectOne("membercount");
+	}
+	
     
     
+    // 검색 조회 
+    public List<memberDTO> search(memberDTO dto){
+    	return session.selectList("searchlist", dto);
+    }
+
     
 
+
+    
+    
+    
+    // 회원가입 
     public void join(memberDTO dto) throws IOException {
-
-    	SqlSessionFactoryBuilder Builder = new SqlSessionFactoryBuilder();
-    	SqlSessionFactory factory = Builder.build(Resources.getResourceAsReader("Board/mybatisConfig.xml"));
-    	SqlSession session = factory.openSession();
 
     	session.insert("join", dto);
 //    	System.out.println("dto : " + dto + dto.getPw());
     	session.commit(); // commit 을 해줘야 실행됨! 
-    	// JDBC 는 excuteUpdate 하면 바로 됬는데, Mybatis 는 commit 개념 필요 
+    	// JDBC 는 excuteUpdate 하면 바로 됬는데, Mybatis 는 commit 개념 필요
+    	// commt / rollback 선택권 
     	
     }
 
-    
-    public int delete(String userid) {
+    // 회원 정보 수정 
+    public int updateMember(memberDTO dto) throws IOException {
 
-        int deleteResult = 0;
-        Connection con = null;
-
-        try {
-            Context initcontext = new InitialContext();
-            Context envContext = (Context) initcontext.lookup("java:/comp/env");
-            DataSource ds = (DataSource) envContext.lookup("jdbc/backdb");
-             con = ds.getConnection();
-
-//sql
-            String sql = "delete from servletmember where id = ?";
-
-            PreparedStatement pr = con.prepareStatement(sql);
-
-            pr.setString(1, userid);
-
-            deleteResult = pr.executeUpdate();
-
-        } catch ( Exception e) {
-            e.printStackTrace();
-        } finally {
-            try { con.close();}
-            catch ( Exception e) {}
-        }
-
-        return deleteResult;
+    	int result = session.update("updatemember", dto);    
+    	session.commit();
+    	return result;
     }
 
+    // 회원 탈퇴 
+    public int deleteMemeber(String id) throws IOException{
 
-    
-    
+    	int result = session.delete("deletemember", id);
+    	session.commit();
+    	return result; 
+    }
+
+    // 로그인 
     public int login(String userid, String userpw) throws IOException {
-
-    	SqlSessionFactoryBuilder Builder = new SqlSessionFactoryBuilder();
-    	SqlSessionFactory factory = Builder.build(Resources.getResourceAsReader("Board/mybatisConfig.xml"));
-    	SqlSession session = factory.openSession();
 
     	String dbpw = session.selectOne("login", userid );
     	
@@ -131,72 +103,8 @@ public class memberDAO {
     	return condition; 
     }
     	
-/*        Connection con = null;
-
-        try {
-            Context initcontext = new InitialContext();
-            Context envContext = (Context) initcontext.lookup("java:/comp/env");
-            DataSource ds = (DataSource) envContext.lookup("jdbc/backdb");
-            con = ds.getConnection();
 
 
-            String sql = "select id, pw from servletmember where id=?";
-
-            PreparedStatement pt = con.prepareStatement(sql);
-            pt.setString(1,userid);
-            ResultSet rs = pt.executeQuery();
-
-            String dbid= null;
-            String dbpw = null;
-            if (rs.next()) {
-                condition=1;
-
-                dbid = rs.getString("id");
-                dbpw = rs.getString("pw");
-
-                if (dbpw.equals(userpw)) {
-                    condition=2;
-                }
-            } else {condition = 3; }
-
-
-} catch (Exception e) { e.printStackTrace();}
-finally { try {con.close(); } catch (Exception e) {} }
-
-        return condition;
-*/    
-
-
-    public int edit(memberDTO dto) {
-
-        Connection con = null;
-
-        int editResult = 0;
-        try {
-            Context initcontext = new InitialContext();
-            Context envContext = (Context) initcontext.lookup("java:/comp/env");
-            DataSource ds = (DataSource) envContext.lookup("jdbc/backdb");
-            con = ds.getConnection();
-
-//sql
-            String sql = "update servletmember set name = ? where id = ?";
-
-            PreparedStatement pr = con.prepareStatement(sql);
-
-            pr.setString(1,dto.getName());
-            pr.setString(2,dto.getId());
-
-            editResult = pr.executeUpdate();
-
-
-
-        } catch ( Exception e) { e.printStackTrace(); }
-
-        finally { try { con.close(); } catch ( Exception e) {} }
-
-        return editResult;
-
-    }
 
 
 //

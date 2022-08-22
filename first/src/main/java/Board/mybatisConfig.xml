@@ -3,9 +3,22 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
-  <!-- mybatis db 연결정보 세팅 파일 -->
 <configuration>
-<environments default="backdb">
+
+<!-- 패키지명 알리아스 주기 -->
+
+<typeAliases>
+<typeAlias type="Board.memberDTO" alias="memberdto"/>
+</typeAliases>
+
+
+
+
+
+
+  <!-- mybatis db 연결정보 세팅 파일 -->
+
+<!-- <environments default="backdb">
 <environment id="backdb">
 <transactionManager type="JDBC"/>
 <dataSource type="POOLED">
@@ -17,17 +30,12 @@
 </environment>
 </environments>
 
-
-
-
-
-
-
+ -->
 <!-- SQL 파일 맵핑  -->
-<mappers>
+<!-- <mappers>
 <mapper resource="Board/membersql-mapping.xml"></mapper>
 </mappers>
-
+ -->
 
 
 </configuration>

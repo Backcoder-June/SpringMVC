@@ -1,6 +1,7 @@
 INDEX VERSION 1.4+C:\Sts3P\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 2714049502.index
 3257176889.index
+3257176889.index
 2614239950.index
 2238802748.index
 474400468.index

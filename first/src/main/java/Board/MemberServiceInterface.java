@@ -18,4 +18,11 @@ public interface MemberServiceInterface {
 	
 	public int login(String id, String pw) throws IOException; 
 	
+	public int updateMember(memberDTO dto) throws IOException;
+
+	public int deleteMember(String id, String pw) throws IOException;
+
+	public int getTotalMember();
+		
+	public List<memberDTO> search(memberDTO dto); 
 }

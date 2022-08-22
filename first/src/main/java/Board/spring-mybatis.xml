@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+<!-- mybatis datasource 를 spring datasource 객체로 변경 -->
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+<property name="url" value="jdbc:mysql://127.0.0.1:3306/backcoder"/>
+<property name="username" value="backcoder"/>
+<property name="password" value="1111"/>
+</bean>
+
+
+
+
+
+<!-- mybatis SQLSessionFactory / SqlSession 객체 생성 -->
+
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+<property name="dataSource" ref="dataSource"/>
+<property name="configLocation" value="classpath:Board/mybatisConfig.xml" />
+<property name="mapperLocations" value="classpath:Board/membersql-mapping.xml" />
+</bean>
+
+
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+<constructor-arg ref="sqlSessionFactory"/>
+</bean>
+ 
+
+
+<context:component-scan base-package="Board"/>
+
+
+
+
+
+
+</beans>

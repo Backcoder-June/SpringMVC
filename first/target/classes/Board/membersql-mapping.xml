@@ -6,37 +6,64 @@
   <mapper namespace="m">
 
    
-  <select id="memberlist" resultType="Board.memberDTO">  
+  <select id="memberlist" resultType="memberdto">  
   select * from servletmember
   </select>
 
-  <select id="onemember" resultType="Board.memberDTO" parameterType="String">  
+  <select id="onemember" resultType="memberdto" parameterType="String">  
   select * from servletmember where id=#{id}
   </select>
 
 
 <!--  int[] a = {0, 5} -->
-<select id="paginglist" resultType="Board.memberDTO"  >
+<select id="paginglist" resultType="memberdto"  >
 	select * from servletmember order by id limit 
 	<foreach collection="array" item="num" separator=",">
 	#{num}
 	</foreach>
 </select>
 
+<!-- 총 인원수 -->
+	<select id="membercount" resultType="int">
+		select count(*) from servletmember   
+	</select>
 
 
-<insert id="join" parameterType="Board.memberDTO" >
+
+
+
+<insert id="join" parameterType="memberdto" >
  insert into servletmember(id, pw, name) values(#{id}, #{pw}, #{name}) 
 </insert>
-
+	
 
 <select id="login" resultType="String">
 select pw from servletmember where id=#{id}
 </select> 
 
 
+<update id="updatemember" parameterType="memberdto">
+	update servletmember set name=#{name}, pw=#{pw} where id=#{id}
+</update>
+
+<delete id="deletemember" parameterType="String">
+delete from servletmember where id=#{id}  
+</delete>
 
 
+<select id="searchlist" resultType="memberdto" parameterType="memberdto">
+select * from servletmember where 
+<choose>
+<when test="id != null">
+id like concat('%',#{id},'%') 
+</when>  
+<when test="name != null">
+name like concat('%',#{name},'%') 
+</when>  
+</choose>
+</select>
 
+  
+  
   
   </mapper>

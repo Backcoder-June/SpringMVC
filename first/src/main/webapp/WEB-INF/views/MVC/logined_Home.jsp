@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: skyst
-  Date: 2022-08-13
-  Time: 오전 9:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -38,13 +31,17 @@ sessionScope.sessionid }!
 <br>
 <br>
 <br>
+<a href="http://localhost:8090/test/update">회원정보 수정</a>
+<br>
+<br>
+
 <form action="http://localhost:8090/webServlet_war_exploded/starting">
     <input type="submit" name="menu" value="로그아웃">
 </form>
 <br>
 <br>
 <br>
-<a href="http://localhost:8090/webServlet_war_exploded/MVC/deletemember.jsp">회원탈퇴</a>
+<a href="http://localhost:8090/test/delete">회원탈퇴</a>
 
 
 <%--

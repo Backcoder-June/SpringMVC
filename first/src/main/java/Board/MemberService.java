@@ -7,11 +7,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("service")
 public class MemberService implements MemberServiceInterface{
 
-	memberDAO dao = new memberDAO();
+	@Autowired
+	memberDAO dao;
 
+	
 	@Override
 	public int login(String id, String pw) throws IOException {
 		int condition = dao.login(id, pw);
@@ -26,7 +28,29 @@ public class MemberService implements MemberServiceInterface{
 	}
 
 
+	@Override
+	public int updateMember(memberDTO dto) throws IOException {
+		
+		/*
+		 * int condition = dao.login(dto.getId(), dto.getPw());
+		 * 
+		 * if(condition==2) { int result = dao.updateMember(dto); return result; } else
+		 * {return 0;}
+		 */
+		int result = dao.updateMember(dto);
+		return result;
+	}
 
+	@Override
+	public int deleteMember(String id, String pw) throws IOException {
+
+		int condition = dao.login(id, pw); 
+		
+		if(condition ==2) {
+			dao.deleteMemeber(id);
+		}
+		return 0;
+	}
 
 	@Override
 	public List<memberDTO> paginglist(int[] limit) throws IOException{
@@ -44,9 +68,15 @@ public class MemberService implements MemberServiceInterface{
 		return onemember;
 	}
 
+	// 페이징하기 위한 전체 회원수 구해오기 
+	@Override
+	public int getTotalMember() {
+		return dao.getCount();
+	}
 
-
-
+	
+	
+	
 	// 전체조회 
 	@Override
 	public List<memberDTO> allMember() throws IOException{
@@ -55,8 +85,14 @@ public class MemberService implements MemberServiceInterface{
 		return memberlist;
 	}
 
-	
-	
+	// 검색조회 
+
+	@Override
+	public List<memberDTO> search(memberDTO dto) {
+		
+		return dao.search(dto);
+		
+	}
 
 	// 등록 
 	@Override

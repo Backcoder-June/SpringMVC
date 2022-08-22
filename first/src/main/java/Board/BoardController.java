@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,6 +48,29 @@ public String allmembers(Model model) throws IOException  {
 
 }
 
+
+@GetMapping("/searchmember")
+public String searchmember(String item, String search, Model model) {
+
+	memberDTO dto = new memberDTO(); 
+	
+	if(item.equals("아이디")) {
+		dto.setId(search);
+	}else if(item.equals("이름")) {
+		dto.setName(search);
+	} 
+	
+	List<memberDTO> searchlist = service.search(dto);
+	
+	model.addAttribute("searchlist", searchlist);
+	
+	return "/MVC/searchmember"; 
+}
+
+
+
+
+
 @GetMapping("/join")
 public String joinform() {
 
@@ -62,6 +86,41 @@ public String joinprocess(memberDTO dto, Model model) throws IOException {
 	
 	
 	return "/MVC/joinsuccess";	
+}
+
+
+@GetMapping("/update")
+public String updateform() {
+	
+	return "/MVC/updatememberform"; 
+}
+
+@PostMapping("/update")
+public String updateprocess(memberDTO dto, HttpSession session) throws IOException {
+
+	String sessionid = (String)session.getAttribute("sessionid");
+	
+		dto.setId(sessionid); 
+	
+	service.updateMember(dto);
+	
+	return "redirect:/home";
+}
+
+@GetMapping("/delete")
+public String deleteform() {
+	
+	return "/MVC/deletemember"; 
+}
+
+@PostMapping("/delete")
+public String deleteprocess(String id, String pw) throws IOException {
+	
+	service.deleteMember(id, pw);
+	
+	return "redirect:/home"; 
+	
+	
 }
 
 
@@ -86,6 +145,39 @@ public String logined() {
 	return "/MVC/logined_Home";
 	
 }
+
+
+
+// 페이징  
+
+// 변수 url 안주고 페이지 어떻게 받은거지 
+@GetMapping("/pagememberlist")
+public String memberlist
+(@RequestParam(value="page", required = false, defaultValue = "1")int page, Model model) throws IOException {
+
+	// page당 개수 바로 가져올건데, 필수는 아니고, 없으면 default 로 1로 설정하겠다. 
+	// requestParam 은 바로 넘기는 용도 + default 값 설정해주는 용도로도 사용할 수 있다. 
+
+	int totalnum = service.getTotalMember();
+	int totalpage = 0; 
+	if(totalnum%4==0){
+		totalpage = totalnum/4; 
+	}else{
+		totalpage =totalnum/4 + 1; 
+	}
+	
+	List<memberDTO> memberlist = service.paginglist(new int[] {(page-1)*4, 4});
+
+	model.addAttribute("memberlist", memberlist);
+	model.addAttribute("totalpage", totalpage);
+	
+	return "/MVC/pagememberlist"; 
+}
+
+
+
+
+
 	
 	/*    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

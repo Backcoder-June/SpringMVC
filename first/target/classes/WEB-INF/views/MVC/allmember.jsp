@@ -11,6 +11,22 @@
 <body>
 
 ${empty sessionScope.sessionid? "Guest" : sessionScope.sessionid} 님 어서오세요
+
+<Br> 
+<br>
+<form action="http://localhost:8090/test/searchmember">
+<select name="item">
+<option>아이디</option>
+<option>이름</option>
+</select>
+
+ : <input type="text" name="search">
+<input type="submit" value="검색">
+</form>
+<br>
+
+
+
 <table border="5">
   <tr>
     <th>아이디</th>

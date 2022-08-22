@@ -20,11 +20,15 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+
 	
-	<context:component-scan base-package="com.backcoder.test" />
+<!-- 	<context:component-scan base-package="com.backcoder.test" />
 	<context:component-scan base-package="annotation.Springmvc" />
 	<context:component-scan base-package="serviceAnnotation" />
-	<context:component-scan base-package="Board" />
+ -->
+
+
+ 	<context:component-scan base-package="Board" />
 
 
 <!-- 핸들러맵핑 설정 추가 -->

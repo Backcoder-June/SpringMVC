@@ -2,13 +2,14 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+		<!-- classpath:serviceAnnotation/member.xml
+		 -->
 
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml
-		classpath:serviceAnnotation/member.xml
-	
+		classpath:Board/spring-mybatis.xml
 		</param-value>
 	</context-param>
 	
@@ -33,6 +34,8 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+
+<!-- CharacterEncoding 한글 -->
 <filter>
 <filter-name>encoding</filter-name>
 <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

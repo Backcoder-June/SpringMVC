@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="http://localhost:8090/webServlet_war_exploded/starting" method="get">
+<form action="http://localhost:8090/test/delete" method="post">
   <table border="5" >
     <caption> 회원 탈퇴 </caption>
     <tr><th>아이디:&nbsp; &nbsp;&nbsp;<input type="text" id="id" name="id"></th></tr>

@@ -37,7 +37,10 @@
 <a href="http://localhost:8090/test/allmembers">회원정보 보러가기</a>
 <br>
 <br>
-<a href="http://localhost:8090/webServlet_war_exploded/MVC/deletemember.jsp">회원탈퇴</a>
+<a href="http://localhost:8090/test/pagememberlist">페이징 회원정보</a>
+<br>
+<br>
+<a href="http://localhost:8090/test/delete">회원탈퇴</a>
 <hr>
 <hr>
 <a href="http://localhost:8090/webServlet_war_exploded/starting?menu=allboard">게시판 보러가기</a>
