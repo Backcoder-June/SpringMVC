@@ -1,5 +1,8 @@
 package Board;
 
+import org.springframework.stereotype.Component;
+
+@Component("boarddto")
 public class BoardDTO {
 
     private int id;

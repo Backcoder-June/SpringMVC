@@ -1,11 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: skyst
-  Date: 2022-08-15
-  Time: 오후 1:17
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,9 +7,21 @@
 </head>
 <body>
 
-${empty sessionScope.userid? "Guest" : sessionScope.userid} 님 어서오세요
+${empty sessionScope.sessionid? "Guest" : sessionScope.sessionid} 님 어서오세요
 <br>
 <hr>
+<form action="http://localhost:8090/test/searchboard">
+<select name="item">
+<option>번호</option>
+<option>제목</option>
+<option>내용</option>
+<option>작성자</option>
+</select>
+
+ : <input type="text" name="search">
+<input type="submit" value="검색">
+</form>
+
 <br>
 <table border="5">
   <tr>
@@ -26,18 +32,29 @@ ${empty sessionScope.userid? "Guest" : sessionScope.userid} 님 어서오세요
   <c:forEach items="${allboard}" var="board" >
     <tr>
       <td>${board.id}</td>
-      <td><a href="http://localhost:8090/webServlet_war_exploded/starting?menu=myboard&id=${board.id}">${board.title}</a></td>
+      <td><a href="http://localhost:8090/test/myboard?id=${board.id}">${board.title}</a></td>
       <td>${board.writer}</td>
     </tr>
   </c:forEach>
 
 </table>
 
+
+<% int totalpage = (Integer)request.getAttribute("totalpage");
+
+for(int i = 1; i<=totalpage; i++){ %>
+<a href="allboard?page=<%=i%>"> <%=i%></a>
+<%}%>
+		
+
+
+
+
 <br>
 <hr>
 
 
-<br> <a href='http://localhost:8090/webServlet_war_exploded/MVC/logined_Home.jsp'>홈으로</a>
+<br> <a href='http://localhost:8090/test/logined'>홈으로</a>
 
 
 

@@ -9,6 +9,7 @@
 
 <typeAliases>
 <typeAlias type="Board.memberDTO" alias="memberdto"/>
+<typeAlias type="Board.BoardDTO" alias="boarddto"/>
 </typeAliases>
 
 

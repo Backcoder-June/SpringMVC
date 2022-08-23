@@ -39,15 +39,15 @@
 <br>
 <hr>
 
-<form action="http://localhost:8090/webServlet_war_exploded/starting">
+<form action="http://localhost:8090/test/boardedit">
   <input type="hidden" name="id" value="${myboard.id}">
   <input type="submit" name="menu" value="수정하기">
 </form>
 
 <br>
-<a href="http://localhost:8090/webServlet_war_exploded/starting?menu=allboard">게시판 이동</a>
+<a href="http://localhost:8090/test/allboard">게시판 이동</a>
 <br>
-<a href="http://localhost:8090/webServlet_war_exploded/MVC/logined_Home.jsp">홈으로</a>
+<a href="http://localhost:8090/test/home">홈으로</a>
 
 </body>
 </html>

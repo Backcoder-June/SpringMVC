@@ -1,14 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: skyst
-  Date: 2022-08-13
-  Time: 오전 9:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>home</title>
+<script src="/resources/js/jquery-3.6.0.min.js" ></script>
+<script>
+$(document).ready(function(){
+        
+});
+    
+</script>
+    
+    
+    
+    
 </head>
 <body>
 <h1> BackCoder Homepage </h1>
@@ -43,10 +47,10 @@
 <a href="http://localhost:8090/test/delete">회원탈퇴</a>
 <hr>
 <hr>
-<a href="http://localhost:8090/webServlet_war_exploded/starting?menu=allboard">게시판 보러가기</a>
+<a href="http://localhost:8090/test/allboard">게시판 보러가기</a>
 <br>
 <br>
-<a href="http://localhost:8090/webServlet_war_exploded/starting?menu=boardwriting">게시물 작성하러가기</a>
+<a id="writing" href="http://localhost:8090/test/boardwriting">게시물 작성하러가기</a>
 <br>
 <br>
 <br>

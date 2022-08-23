@@ -20,10 +20,10 @@ sessionScope.sessionid }!
 <a href="http://localhost:8090/test/allmembers">회원정보 보러가기</a>
 <br>
 <br>
-<a href="http://localhost:8090/webServlet_war_exploded/starting?menu=allboard">게시판 보러가기</a>
+<a href="http://localhost:8090/test/allboard">게시판 보러가기</a>
 <Br>
 <Br>
-<a href="http://localhost:8090/webServlet_war_exploded/starting?menu=boardwriting">게시물 작성하러가기</a>
+<a href="http://localhost:8090/test/boardwriting">게시물 작성하러가기</a>
 <br>
 <br>
 <br>
@@ -35,7 +35,7 @@ sessionScope.sessionid }!
 <br>
 <br>
 
-<form action="http://localhost:8090/webServlet_war_exploded/starting">
+<form action="http://localhost:8090/test/logout">
     <input type="submit" name="menu" value="로그아웃">
 </form>
 <br>

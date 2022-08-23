@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="b">
+
+<select id="allboard" resultType ="boarddto">
+select * from boarddto order by id limit 
+<foreach collection="array" item="num" separator=",">
+#{num}
+</foreach>
+</select>
+
+
+
+
+<select id="boardid" resultType ="boarddto" parameterType="int">
+select * from boarddto where id=#{id}
+</select>
+
+<select id="totalnum" resultType ="int" >
+select count(*) from boarddto
+</select>
+
+
+<!-- 검색 -->
+<select id="searchboard" resultType="boarddto" parameterType="boarddto">
+select * from boarddto where 
+<choose>
+<when test="id != 0">
+id like concat('%',#{id},'%')
+</when>
+
+<when test="title != null">
+title like concat('%',#{title},'%')
+</when>
+
+<when test="contents != null">
+contents like concat('%',#{contents},'%')
+</when>
+
+<when test="writer != null">
+writer like concat('%',#{writer},'%')
+</when>
+</choose>
+
+<!-- order by id limit
+<foreach collection="array" item="searchLimit" separator=",">
+#{searchLimit}
+</foreach>
+ -->
+
+</select>
+
+
+
+
+
+<insert id="insertboard" parameterType="boarddto">
+insert into boarddto (title, contents, writer) values(#{title}, #{contents}, #{writer} )
+</insert>
+
+   
+<!--   <select id="memberlist" resultType="memberdto">  
+  select * from servletmember
+  </select>
+
+  <select id="onemember" resultType="memberdto" parameterType="String">  
+  select * from servletmember where id=#{id}
+  </select>
+ -->
+  
+  
+  
+  </mapper>
