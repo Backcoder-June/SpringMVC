@@ -16,11 +16,20 @@ public class BoardService implements BoardServiceInterface {
 		return boarddao.Allboard(limit); 
 	}
 
-	
-	
-	
+	@Override
+	public void editBoard(BoardDTO dto) {
+		boarddao.editBoard(dto);
+	}
+
+
+
+
+
+
 	@Override
 	public BoardDTO myboard(int id) {
+		
+		boarddao.viewcount(id);
 		
 		return boarddao.Myboard(id);
 	}
@@ -30,6 +39,14 @@ public class BoardService implements BoardServiceInterface {
 	public int saveBoard(BoardDTO dto) {
 		return boarddao.insertBoard(dto);
 	}
+
+	
+	@Override
+	public void deleteBoard(int id) {
+		boarddao.deleteBoard(id);
+	}
+
+
 
 
 	@Override

@@ -22,13 +22,20 @@
 	</beans:bean>
 
 	
-<!-- 	<context:component-scan base-package="com.backcoder.test" />
-	<context:component-scan base-package="annotation.Springmvc" />
-	<context:component-scan base-package="serviceAnnotation" />
- -->
+
+
+<!-- 파일업로드 MultipartFile 객체등록 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+
+
+
+
+
 
 
  	<context:component-scan base-package="Board" />
+ 	<context:component-scan base-package="upload" />
 
 
 <!-- 핸들러맵핑 설정 추가 -->

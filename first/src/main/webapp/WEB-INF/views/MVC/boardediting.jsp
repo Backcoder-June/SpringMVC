@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: skyst
-  Date: 2022-08-15
-  Time: 오후 4:47
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,22 +8,23 @@
 
 <h1> Board </h1>
 
-<form action="http://localhost:8090/webServlet_war_exploded/starting" method="get">
+<form action="http://localhost:8090/test/editboard" method="post">
   <table border = 5>
-    <tr><th>제목</th><td><input type ='text' name = 'title' value="${myboard.title}"></td></tr>
-    <tr><th>내용</th><td><textarea name = 'contents' rows=5 cols=50>${myboard.contents}</textarea></td></tr>
+    
+    <tr><th>번호</th><td><input type ='text' name = 'id' value="${editTarget.id}" readonly></td></tr>
+    <tr><th>제목</th><td><input type ='text' name = 'title' value="${editTarget.title}"></td></tr>
+    <tr><th>내용</th><td><textarea name = 'contents' rows=5 cols=50>${editTarget.contents}</textarea></td></tr>
     <tr><th>작성자</th><td><input type ='text' name = 'writer'
-                               value="${myboard.writer}" readonly></td></tr>
+                               value="${editTarget.writer}" readonly></td></tr>
   </table>
 
-  <input type="hidden" name="id" value="${myboard.id}">
-
+  <input type="hidden" name="boardeditid" value="${editTarget.id}">
   <input type="submit" value="수정" name="menu">
 </form>
 
 <br>
 
-<a href="http://localhost:8090/webServlet_war_exploded/MVC/logined_Home.jsp">홈으로</a>
+<a href="http://localhost:8090/test/logined">홈으로</a>
 
 
 

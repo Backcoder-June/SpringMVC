@@ -1,9 +1,0 @@
-package tv;
-
-public interface TVinterface {
-	void powerOn();
-	void powerOff();
-	void volumeUp();
-	void volumeDown();
-
-}

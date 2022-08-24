@@ -9,17 +9,35 @@ public class BoardDTO {
     private String title;
     private String contents;
     private String writer;
-
-    public BoardDTO(int id, String title, String contents, String writer) {
+    private int viewcount;
+    
+    public BoardDTO(int id, String title, String contents, String writer, int viewcount) {
         this.id = id;
         this.title = title;
         this.contents = contents;
         this.writer = writer;
+        this.viewcount = viewcount;
     }
+    
+    
     public BoardDTO(){}
 
 
-    public int getId() {
+    
+    
+    
+    
+    public int getViewcount() {
+		return viewcount;
+	}
+
+
+	public void setViewcount(int viewcount) {
+		this.viewcount = viewcount;
+	}
+
+
+	public int getId() {
         return id;
     }
 

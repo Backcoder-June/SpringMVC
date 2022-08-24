@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -86,7 +89,46 @@ public class BoardController {
 		boardservice.saveBoard(dto);
 		return "redirect:/allboard"; 
 	}
+
 	
+	
+	@GetMapping("/editboard")
+	public String editform(int editboardid, String editsessionid, HttpServletRequest req, Model model) {
+		
+		BoardDTO editTarget = boardservice.myboard(editboardid);
+		
+		model.addAttribute("editTarget", editTarget);
+
+		HttpSession session = req.getSession();
+		String sessionid = (String)session.getAttribute("sessionid");
+		
+		if(sessionid.equals(editsessionid)) {
+			return "/MVC/boardediting"; 
+		}else { return "MVC/editfail"; }
+	}
+	
+	@PostMapping("/editboard")
+	public String editboard(BoardDTO dto) {
+		
+		boardservice.editBoard(dto);
+	
+		return "redirect:/allboard";
+	}
+	
+	
+	@GetMapping("/deleteboard")
+	public String deleteBoard(String deletesessionid, int deleteboardid, HttpServletRequest request) {
+	
+		HttpSession session = request.getSession();
+		String sessionid = (String)session.getAttribute("sessionid");
+		
+		if(deletesessionid.equals(sessionid)){
+			boardservice.deleteBoard(deleteboardid);
+		}else {
+			return "/MVC/deletefail"; 
+		}
+		return "redirect:/allboard";
+	}
 	
 	
 	

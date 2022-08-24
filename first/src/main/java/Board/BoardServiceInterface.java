@@ -14,6 +14,9 @@ public interface BoardServiceInterface {
 
 	public List<BoardDTO> searchBoard(BoardDTO dto);
 
+	public void deleteBoard(int id);
+
+	public void editBoard(BoardDTO dto);      
 	
 	
 	

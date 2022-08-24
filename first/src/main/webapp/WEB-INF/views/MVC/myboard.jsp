@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: skyst
-  Date: 2022-08-15
-  Time: 오후 4:14
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,13 +15,15 @@
     <th>제목</th>
     <th>내용</th>
     <th>작성자</th>
+    <th>조회수</th>
   </tr>
     <tr>
 
-      <td>${myboard.id}</td>
+      <th>${myboard.id}</th>
       <td>${myboard.title}</td>
       <td>${myboard.contents}</td>
       <td>${myboard.writer}</td>
+      <th>${myboard.viewcount}</th>
     </tr>
 
 </table>
@@ -39,10 +34,19 @@
 <br>
 <hr>
 
-<form action="http://localhost:8090/test/boardedit">
-  <input type="hidden" name="id" value="${myboard.id}">
+<form action="http://localhost:8090/test/editboard">
+  <input type="hidden" name="editsessionid" value="${myboard.writer}">
+  <input type="hidden" name="editboardid" value="${myboard.id}">
   <input type="submit" name="menu" value="수정하기">
 </form>
+
+<form action="http://localhost:8090/test/deleteboard">
+  <input type="hidden" name="deletesessionid" value="${myboard.writer}">
+  <input type="hidden" name="deleteboardid" value="${myboard.id}">
+  <input type="submit" name="delete" value="삭제하기">
+</form>
+
+
 
 <br>
 <a href="http://localhost:8090/test/allboard">게시판 이동</a>

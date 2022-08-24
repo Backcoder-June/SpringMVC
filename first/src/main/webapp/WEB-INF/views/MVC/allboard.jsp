@@ -28,12 +28,14 @@ ${empty sessionScope.sessionid? "Guest" : sessionScope.sessionid} 님 어서오�
     <th>번호</th>
     <th>제목</th>
     <th>작성자</th>
+    <th>조회수</th>
   </tr>
   <c:forEach items="${allboard}" var="board" >
     <tr>
-      <td>${board.id}</td>
+      <th>${board.id}</th>
       <td><a href="http://localhost:8090/test/myboard?id=${board.id}">${board.title}</a></td>
       <td>${board.writer}</td>
+      <th>${board.viewcount}</th>
     </tr>
   </c:forEach>
 

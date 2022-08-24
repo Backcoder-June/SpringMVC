@@ -40,7 +40,7 @@ public class BoardDAO {
     	int result = session.insert("insertboard", dto);
 
 // 왜 commit이 자동으로 되지? true 설정 안하고 bean 에서 그냥 생성해둔건데 
-    	//session.commit();
+//    	session.commit();
     	
     	return result; 
     }
@@ -57,9 +57,23 @@ public class BoardDAO {
     	
     }
 
+
+    public void viewcount(int id) {
+    	session.update("viewcount", id); 
+    }
+
+    public void deleteBoard(int id) {
+    	session.delete("deleteId", id); 
+    }
     
+    public BoardDTO fbi(int id) {
+    	return session.selectOne("fbi", id); 
+    }
     
-    
+    public void editBoard(BoardDTO dto) {
+    	
+    	session.update("editBoard", dto);
+    }
     
     
     
@@ -124,75 +138,7 @@ public class BoardDAO {
 	 * return dto; }
 	 */
 
-    public int editBoard(BoardDTO boardDTO) {
-
-        Connection con = null;
-        int saveresult = 0;
-
-        try {
-            Context initcontext = new InitialContext();
-            Context envContext = (Context) initcontext.lookup("java:/comp/env");
-            DataSource ds = (DataSource) envContext.lookup("jdbc/backdb");
-            con = ds.getConnection();
-
-//sql
-            String sql = "update boardDTO set title = ?, contents = ? where id = ?";
-
-            PreparedStatement pr = con.prepareStatement(sql);
-
-            pr.setString(1, boardDTO.getTitle() );
-            pr.setString(2, boardDTO.getContents() );
-            pr.setInt(3, boardDTO.getId());
-
-            saveresult = pr.executeUpdate();
-
-
-
-        } catch ( Exception e) { e.printStackTrace(); }
-
-        finally { try { con.close(); } catch ( Exception e) {} }
-
-        return saveresult;
-    }
-
-    public ArrayList<BoardDTO> fbi(String writer) {
-
-        Connection con = null;
-        BoardDTO dto = null;
-        ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
-
-        try {
-            Context initcontext = new InitialContext();
-            Context envContext = (Context) initcontext.lookup("java:/comp/env");
-            DataSource ds = (DataSource) envContext.lookup("jdbc/backdb");
-            con = ds.getConnection();
-
-//sql
-            String sql = "select * from boardDTO where writer = ?";
-
-            PreparedStatement pr = con.prepareStatement(sql);
-
-            pr.setString(1, writer );
-
-            ResultSet resultSet = pr.executeQuery();
-
-
-            while (resultSet.next()) {
-
-                BoardDTO target = new BoardDTO(resultSet.getInt(1), resultSet.getString(2),
-                        resultSet.getString(3), resultSet.getString(4));
-
-                list.add(target);
-            }
-
-        } catch ( Exception e) { e.printStackTrace(); }
-
-        finally { try { con.close(); } catch ( Exception e) {} }
-
-        return list;
-    }
-
-
+    
 
 
 

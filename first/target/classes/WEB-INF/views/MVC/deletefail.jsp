@@ -11,11 +11,11 @@
     <title>faildelete</title>
 </head>
 <body>
-<h1>아이디, 혹은 비밀번호가 일치하지 않아 회원탈퇴에 실패하였습니다.</h1>
+<h1>로그인 정보가 일치하지 않아 게시물 삭제에 실패하였습니다.</h1>
+다시 로그인 후 시도해 주세요! 
 <br>
 
-<a href="http://localhost:8090/webServlet_war_exploded/MVC/Home.jsp">홈으로</a> <br> <br>
-<a href="http://localhost:8090/webServlet_war_exploded/MVC/deletemember.jsp">회원탈퇴 다시시도</a>
+<a href="http://localhost:8090/test/home">홈으로</a> <br> <br>
 
 
 

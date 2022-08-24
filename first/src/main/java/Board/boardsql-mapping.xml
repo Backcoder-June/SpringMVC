@@ -13,8 +13,6 @@ select * from boarddto order by id limit
 </select>
 
 
-
-
 <select id="boardid" resultType ="boarddto" parameterType="int">
 select * from boarddto where id=#{id}
 </select>
@@ -54,6 +52,23 @@ writer like concat('%',#{writer},'%')
 </select>
 
 
+
+<update id="viewcount">
+
+update boarddto set viewcount = viewcount+1 
+where id=#{id} 
+
+</update>
+
+<delete id="deleteId">
+delete from boarddto where id = #{id} 
+</delete>
+
+
+<update id="editBoard">
+update boarddto set title=#{title}, contents=#{contents}
+where id=#{id}
+</update>
 
 
 

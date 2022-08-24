@@ -64,7 +64,7 @@ public class memberDAO {
 
     	session.insert("join", dto);
 //    	System.out.println("dto : " + dto + dto.getPw());
-    	session.commit(); // commit 을 해줘야 실행됨! 
+//    	session.commit(); // commit 을 해줘야 실행됨! 
     	// JDBC 는 excuteUpdate 하면 바로 됬는데, Mybatis 는 commit 개념 필요
     	// commt / rollback 선택권 
     	
@@ -74,7 +74,7 @@ public class memberDAO {
     public int updateMember(memberDTO dto) throws IOException {
 
     	int result = session.update("updatemember", dto);    
-    	session.commit();
+//    	session.commit();
     	return result;
     }
 
@@ -82,7 +82,7 @@ public class memberDAO {
     public int deleteMemeber(String id) throws IOException{
 
     	int result = session.delete("deletemember", id);
-    	session.commit();
+//    	session.commit();
     	return result; 
     }
 
