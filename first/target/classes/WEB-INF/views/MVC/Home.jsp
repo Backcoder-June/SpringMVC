@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>home</title>
-<script src="/resources/js/jquery-3.6.0.min.js" ></script>
+<script src="resources/js/jquery-3.6.0.min.js" ></script>
 <script>
 $(document).ready(function(){
         
